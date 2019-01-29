@@ -1,0 +1,43 @@
+
+-Récupérer tous les albums
+SELECT * FROM albums
+
+-Récupérer tous les albums dont le titre contient "Great" (indice)
+select * from albums where title like '%great%'
+
+-Donner le nombre total d'albums contenus dans la base (sans regarder les id bien sûr)
+select count(*) from albums;
+
+-Supprimer tous les albums dont le nom contient "music"
+delete from albums where title like "%music%";
+
+-Récupérer tous les albums écrits par AC/DC
+select * from albums inner join artists on albums.ArtistId = artists.ArtistId where Name = "AC/DC";
+
+-Récupérer tous les titres des albums de AC/DC
+select title from albums inner join artists on albums.ArtistId = artists.ArtistId where Name = "AC/DC";
+
+-Récupérer la liste des titres de l'album "Let There Be Rock"
+select name from tracks inner join albums on tracks.AlbumId = tracks.AlbumId where title = "Let There Be Rock";
+
+-Afficher le prix de cet album ainsi que sa durée totale
+select unitprice, sum(milliseconds) as  "duree total" from tracks inner join albums on albums.AlbumId = tracks.AlbumId where title = "Let There Be Rock";
+
+-Afficher le coût de l'intégralité de la discographie de "Deep Purple"
+SELECT artists.name as "Nom artists", sum(tracks.UnitPrice) as "somme discographie" FROM tracks INNER JOIN albums ON albums.AlbumId = tracks.AlbumId INNER JOIN artists ON artists.ArtistId = albums.ArtistId WHERE artists.name= 'Deep Purple' ; 
+
+-Créer l'album de ton artiste favori en base, en renseignant correctement les trois tables albums, artists et tracks
+
+
+
+
+
+
+
+
+
+
+
+
+
+
